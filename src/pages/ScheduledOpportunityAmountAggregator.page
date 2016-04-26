@@ -1,0 +1,88 @@
+<apex:page sidebar="false" showHeader="false" controller="SchedualOpportunityController"  >
+    <div class="center-div">
+    <!-- Page Header -->
+  <apex:sectionHeader title="Invoice Generation Project" />
+  <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+     <!-- Page Form -->  
+    </div>
+    <div class="center-div">
+        
+        <apex:form >
+        	<apex:pageBlock title="CRON Expression Generator" >
+                <apex:pageBlockSection columns="1">
+                	<!-- Cron String -->
+                    <apex:PageMessages />  
+                </apex:pageBlockSection>
+                
+            	<apex:pageBlockSection columns="2"  collapsible="false">
+                    <apex:inputText label="Schedular Name" value="{!name}"/>
+                    <!-- Seconds -->
+                    <apex:selectList value="{!seconds}" label="Seconds" multiselect="false" size="1">
+                        <apex:selectOptions value="{!secondsOptions}"/>
+                    </apex:selectList>
+                    <!-- Minute -->
+                    <apex:selectList value="{!minute}" label="Minutes" multiselect="false" size="1">
+                        <apex:selectOptions value="{!minuteOptions}"/>
+                    </apex:selectList>
+                    <!-- Hours -->
+                    <apex:selectList value="{!hours}" label="Hours" multiselect="false" size="1">
+                        <apex:selectOptions value="{!hoursOptions}"/>
+                    </apex:selectList>
+                    <!-- Days -->
+                    <apex:selectList value="{!days}" label="Day of Month" multiselect="false" size="1">
+                        <apex:selectOptions value="{!daysOptions}"/>
+                    </apex:selectList>
+                    
+                    <!-- Months -->
+                    <apex:selectList value="{!months}" label="Month" multiselect="false" size="1">
+                        <apex:selectOptions value="{!monthsOptions}"/>
+                    </apex:selectList>
+                    
+                    <!-- WEEKS -->
+                    <apex:selectList value="{!weeks}" label="Day of Week " multiselect="false" size="1">
+                        <apex:selectOptions value="{!weeksOptions}"/>
+                    </apex:selectList>
+                    
+                    <!-- Year -->
+                    <apex:selectList value="{!years}" label="Year" multiselect="false" size="1">
+                        <apex:selectOptions value="{!yearsOptions}"/>
+                    </apex:selectList>
+
+       			</apex:pageBlockSection>
+                
+                <apex:pageBlockSection >
+                	<apex:commandButton action="{!save}" value="  Preview  "/> 
+                    <apex:commandButton action="{!schedule}" value="  Schedule  "/>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+        </apex:form>
+    </div>
+<style>
+    .logo {
+      float: right;
+      width: 150px;
+      margin: -65px 20px 0 0;
+    }
+    body
+    {
+      padding: 30px;
+      background-color: #fcfcfc;  
+    }
+    .center-div
+    {
+      margin: 0 auto;
+      max-width: 700px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 1px;
+    }
+    .cronMessage { color: blue; font-weight: strong;}
+
+ table.crntext td {
+                 font-size:16px;
+                 font-weight:bold;
+                 text-align:center;
+                 color:blue;}
+
+</style>
+</apex:page>

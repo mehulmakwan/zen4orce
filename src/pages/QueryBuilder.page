@@ -1,0 +1,122 @@
+<apex:page sidebar="false" showHeader="false" controller="QueryBuilderController">
+    <c:LoadingBox />
+    <div class="center-div">
+        <!-- Page Header -->
+      <apex:sectionHeader title="Query Builder" />
+      <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+         <!-- Page Form -->  
+    </div>
+     <div class="center-div">   
+        <apex:form id="theForm"> 
+            <apex:pageMessages />
+              <apex:pageBlock >
+                  <apex:pageBlockSection >
+                      <apex:pageBlockSectionItem >
+                          <apex:outputlabel value="Object Names :"/> 
+                              <apex:actionRegion >
+                                   <apex:selectList value="{!selectedObject}" size="1">
+                                       <apex:actionSupport event="onchange" status="loadStatus" action="{!populateFields}" reRender="myFields,tarea" />
+                                       <apex:selectOptions value="{!objNames}">
+                                       
+                                       </apex:selectOptions>
+                                    </apex:selectList>
+                              </apex:actionRegion>                         
+                      </apex:pageBlockSectionItem>
+                  </apex:pageBlockSection>
+              </apex:pageBlock>
+        
+              <apex:pageBlock >
+                  <apex:pageBlockSection columns="3" >
+                      <apex:pageBlockSectionItem >
+                              <apex:outputlabel value="Field Names :"/>   
+                              <apex:outputPanel id="myFields">   
+                                <apex:actionRegion >  
+                                    <div class="column">
+                                   <apex:selectList value="{!selectedField}" size="5" multiselect="true" > <!-- Contains select value only -->
+                                        <apex:selectOptions value="{!fieldNames}"/> <!-- Contains all value -->
+                                       </apex:selectList>
+                                        </div>
+                   					<div class="column">
+                                    			<apex:commandButton value=" Add " status="loadStatus" action="{!add}"  reRender="theForm"/>
+                                    </div>
+                                    <div class="column">
+                                       <apex:selectList value="{!addFieldSelected}" size="5" multiselect="true"> <!-- Contains select value only -->
+                                        <apex:selectOptions value="{!addedFields}"/> <!-- Contains all value -->
+                                           <apex:actionSupport event="onclick" 
+                                                           action="{!add}"
+                                                           status="loadStatus"
+                                                           rerender="tarea" />
+                                           
+                                          
+                                    </apex:selectList>
+                                     </div>
+                                </apex:actionRegion>      
+                             </apex:outputPanel>           
+                      </apex:pageBlockSectionItem>
+                   </apex:pageBlockSection>
+               </apex:pageBlock>
+                  <apex:pageBlock >
+                      
+                         <!-- Records -->
+                        <apex:pageBlockSection columns="2">
+                            <apex:selectList value="{!records}" label="Maximum # Records to Display " multiselect="false" size="1">
+                                <apex:selectOptions value="{!recordsOptions}"/>
+                            </apex:selectList>
+                            
+                            <!-- Radio button -->
+                            <apex:outputPanel id="radio">  
+                                <apex:selectRadio value="{!Assce}" label="Sort: " >
+                                    <apex:selectOptions value="{!radioOptions}"/>
+                                    <apex:actionSupport event="onclick" 
+                                                           action="{!add}" 
+                                                           status="loadStatus"
+                                                           rerender="tarea" />
+                                </apex:selectRadio>  
+                            </apex:outputPanel>   
+                      </apex:pageBlockSection> 
+                      
+                       <!-- Text Area -->
+                      <apex:pageBlockSection >
+                          <apex:actionRegion >
+                              <apex:outputPanel id="tarea">
+                                    <apex:inputTextarea value="{!message}" cols="100" rows="10" /> 
+                              </apex:outputPanel>
+                          </apex:actionRegion>
+                      </apex:pageBlockSection>
+                      
+                      <!-- Execute Button -->
+                      <apex:pageBlockButtons location="Bottom" >
+                        <apex:commandButton value=" Execute " action="{!execute}"  status="loadStatus"  reRender="tables"/>    
+                    </apex:pageBlockButtons> 
+                  </apex:pageBlock> 
+            
+           <apex:pageBlock title="Output" id="tables" >
+            <apex:pageblocktable value="{!sobjList}" var="query">
+                        <apex:repeat value="{!selectedField}" var="m1">
+                         <apex:column value="{!query[m1]}"/>
+                        </apex:repeat>
+                        </apex:pageblocktable>
+           </apex:pageBlock>
+		</apex:form>
+	</div>
+    <style>
+        .logo {
+          float: right;
+          width: 150px;
+          margin: -65px 20px 0 0;
+        }
+        body
+        {
+          padding: 30px;
+          background-color: #3A3A38;  
+        }
+        .center-div
+        {
+          margin: 0 auto;
+          max-width: 700px;
+          height: 100px;
+          background-color: #ccc;
+          border-radius: 1px;
+        }       
+    </style>
+</apex:page>

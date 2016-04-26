@@ -1,0 +1,63 @@
+<apex:page language="{!language}" cache="false" sidebar="false" showHeader="false" standardController="Student__c" extensions="StudentRegistrationController" >
+     <!-- Page Header -->
+  <div class="center-div">
+  <apex:sectionHeader title="Student Registration Form" />
+  <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+     <!-- Page Form -->  
+
+  
+    <apex:form id="myForm">
+        <apex:pageBlock >
+        	<apex:pageMessages />
+            <apex:pageBlockSection >
+            		<apex:selectList id="dd" value="{!language}" label="Language" multiselect="false" size="1">
+                        <apex:actionSupport event="onchange" reRender="ss"/>  
+                        <apex:selectOptions value="{!languageOptions}"/>
+                </apex:selectList>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    	<apex:pageBlock id="ss" >  
+           
+            <apex:pageBlockSection >
+               	<apex:inputField label="{!$Label.Name}"  value="{!Student__c.Name}"/>
+                <apex:inputField label="{!$Label.roll}" value="{!Student__c.Roll_Number__c}"/>
+                <apex:inputField label="{!$Label.gender}" value="{!Student__c.Gender__c}"/>
+                <apex:inputField label="{!$Label.Course_Applying}" value="{!Student__c.Course_Applying__c}"/>
+                <apex:inputField label="{!$Label.hsc}" value="{!Student__c.H_S_C__c}"/>
+                <apex:inputField label="{!$Label.ssc}" value="{!Student__c.S_S_C__c}"/>
+                <apex:inputField label="{!$Label.country}" value="{!Student__c.Country__c}"/>
+                <apex:inputField label="{!$Label.state}" value="{!Student__c.State__c}"/>
+                <apex:inputField label="{!$Label.city}" value="{!Student__c.City__c}"/>                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockButtons location="Bottom" >
+            	<apex:commandButton value=" Save " action="{!save}" />
+                
+            </apex:pageBlockButtons>
+            
+            
+            
+        </apex:pageBlock>
+    </apex:form>
+    </div>
+<style>
+ .logo {
+      float: right;
+      width: 150px;
+      margin: -65px 20px 0 0;
+    }
+    body
+    {
+      padding: 30px;
+      background-color: #fcfcfc;  
+    }
+    .center-div
+    {
+      margin: 0 auto;
+      max-width: 700px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 1px;
+    }
+   </style>
+</apex:page>

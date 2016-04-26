@@ -1,0 +1,15 @@
+<apex:page controller="raw" >
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                 <apex:selectRadio value="{!showField}" label="Click me to see text box: " >
+                        <apex:selectOptions value="{!radioOptions}"/>
+                     	<apex:actionSupport event="onclick" reRender="textfield" rendered="true"/>
+                 </apex:selectRadio>    
+                 <apex:outputPanel >
+                     <apex:inputText id="textfield" rendered="false"  />
+                 </apex:outputPanel>
+            </apex:pageBlockSection>
+       </apex:pageBlock>
+</apex:form>
+</apex:page>

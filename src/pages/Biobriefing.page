@@ -1,0 +1,20 @@
+<apex:page standardController="Biobriefing__c" sidebar="false" showHeader="false" extensions="biobriefingController">
+    <apex:form >
+    <apex:pageBlock title="Bio Briefing">
+    	<apex:pageBlockSection columns="1">
+            <apex:inputField value="{! Biobriefing__c.Name }"/> 
+            <apex:inputField value="{! Biobriefing__c.Department__c }"/>
+             <apex:inputField value="{! Biobriefing__c.Birth_Date__c }"/>
+             <apex:inputField value="{! Biobriefing__c.Mailing_Address__c }"/> 
+        </apex:pageBlockSection>   
+        
+            <apex:pageBlockButtons >
+            <apex:commandButton action="{! save }" value="save" />        
+       		</apex:pageBlockButtons>
+        
+           
+        	
+                   
+    </apex:pageBlock>
+   </apex:form>     
+</apex:page>

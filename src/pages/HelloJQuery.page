@@ -1,0 +1,13 @@
+<apex:page >
+    <apex:includeScript value="{!$Resource.jQuery}"/>
+    
+    <script type="text/javascript">
+    	jQuery.noConflict();
+    	jQuery(document).ready(function(){
+        	jQuery("#message").html("Hello From jQuery!")});
+    </script>
+    <h1 id = "message">
+        
+    </h1>
+    
+</apex:page>

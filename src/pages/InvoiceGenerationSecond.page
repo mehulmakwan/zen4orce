@@ -1,0 +1,51 @@
+<apex:page standardController="Project__c" sidebar="false" showHeader="false" extensions="InvoiceSecondController">
+   <div class="center-div">
+    <!-- Page Header -->
+  <apex:sectionHeader title="Invoice Generation" />
+  <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+     <!-- Page Form -->  
+    </div>
+    <div class="center-div">
+    <apex:form >
+        <apex:pageMessages />
+        <apex:pageBlock >
+        	<apex:pageBlockSection >
+            	<apex:inputfield value="{!Project__c.Name}" id="Name"/>
+        		<apex:inputfield value="{!Project__c.Start_Date__c}" id="sd"/>	
+        		<apex:inputfield value="{!Project__c.End_Date__c}" id="ed"/>
+                <apex:commandButton value="Search" action="{!Search}"/>
+            </apex:pageBlockSection>
+            	<apex:pageBlockTable value="{!teList}" var="tlist"> 
+                    <apex:column >
+                        <apex:inputCheckbox value="{!tlist.selected}"/>
+                    </apex:column>
+                <apex:column value="{!tlist.te.Name}"/>
+                <apex:column value="{!tlist.te.Date__c}"/>
+                <apex:column value="{!tlist.te.Duration__c}"/>
+                </apex:pageBlockTable>
+            <apex:commandButton value="Generate Invoice" action="{!generate}"/>
+            <apex:commandButton value="Cancel" onclick="clearValue()"/> 
+        </apex:pageBlock>        
+    </apex:form>
+    </div>
+    <style>
+    .logo {
+      float: right;
+      width: 150px;
+      margin: -65px 20px 0 0;
+    }
+    body
+    {
+      padding: 30px;
+      background-color: #fcfcfc;  
+    }
+    .center-div
+    {
+      margin: 0 auto;
+      max-width: 700px;
+      height: 100px;
+      background-color: #ccc;
+      border-radius: 1px;
+    }
+</style>
+</apex:page>

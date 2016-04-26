@@ -1,0 +1,37 @@
+<apex:page standardController="UT_Fund__c"  sidebar="false" >
+      <!-- Page Header -->
+  <apex:sectionHeader title="UT Fund Edit Page" />
+  <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+    
+     <!-- Begin Form -->
+    <apex:form >
+        <apex:pageBlock >
+        	<apex:pageBlockSection columns="2">
+            	<apex:inputField value="{!UT_Fund__c.Name}"/>
+                <apex:inputField value="{!UT_Fund__c.Opening_Date__c}"/>
+                <apex:inputField value="{!UT_Fund__c.Closing_Date__c}"/>
+                <apex:inputField value="{!UT_Fund__c.Currency__c}"/>
+                <apex:inputField value="{!UT_Fund__c.Front_End_Load__c}"/>
+                <apex:inputField value="{!UT_Fund__c.ISIN__c}"/>
+                <apex:inputField value="{!UT_Fund__c.Management_Fee__c}"/> 
+                <apex:inputField value="{!UT_Fund__c.Valuata_Redemption__c}"/>
+                <apex:inputField value="{!UT_Fund__c.Valuata_Subscription__c}"/>
+                <apex:inputField value="{!UT_Fund__c.Cut_off_Time__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="Bottom" >
+            	<apex:commandButton value="Save" action="{!save}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+ <style>
+    .logo {
+      float: right;
+      width: 150px;
+      margin: -65px 20px 0 0;
+    }
+    .wrapper {
+         text-align:center;
+        
+		}
+</style>
+</apex:page>

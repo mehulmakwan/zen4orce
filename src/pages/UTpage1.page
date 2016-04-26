@@ -1,0 +1,63 @@
+<apex:page standardController="UT_Transaction__c" extensions="UTTransactionhandler" sidebar="false" showHeader="false">
+     <!-- Page Header -->
+  <apex:sectionHeader title="UT Transaction Page" />
+  <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+    
+<script language="javascript">
+    var Stringvalue='{!flag1}'; 
+    if(Stringvalue=='true')
+    {
+   		 alert('Funds Are not Available');
+    }
+function displayFields(someval)
+{
+    debugger;
+   
+   var data = document.getElementById(someval).value;
+    if( data == 'Purchase')
+    {
+        document.getElementById('{!$Component.frm1.meh1.mehsec.sf}').style.display = 'none';
+        document.getElementById('{!$Component.frm1.meh1.mehsec.dt}').style.display = 'block';
+    }
+    else if(data == 'Purchase (switch In)' || data == 'Redemption (Switch Out)')
+    {
+        document.getElementById('{!$Component.frm1.meh1.mehsec.dt}').style.display = 'none';
+        document.getElementById('{!$Component.frm1.meh1.mehsec.sf}').style.display = 'block';
+    }
+    else
+        {
+        	document.getElementById('{!$Component.frm1.meh1.mehsec.dt}').style.display = 'block';
+        	document.getElementById('{!$Component.frm1.meh1.mehsec.sf}').style.display = 'block';
+        }
+}
+</script>
+<apex:form id="frm1">
+    <apex:pageBlock title="UT Transaction" id="meh1" >
+        <apex:pageBlockButtons location="Bottom" >
+            <apex:commandButton value="Save" action="{!Save}" rerender="showmsg"/>
+        </apex:pageBlockButtons>
+            <apex:pageBlockSection id="mehsec" columns="2">  
+                <apex:inputField value="{!UT_Transaction__c.Amount__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Currency1__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Client_name__c}"/> 
+                <apex:inputField value="{!UT_Transaction__c.Transaction_Type__c}" id="type" onchange="javascript:displayFields('{!$Component.type}')"/>
+                <apex:inputField value="{!UT_Transaction__c.Dealing_Terms__c}" id="dt"/>
+                <apex:inputField value="{!UT_Transaction__c.Switching_Fee__c}" id="sf"/>
+                <apex:inputField value="{!UT_Transaction__c.No_of_Units__c}"/>               
+                <apex:inputField value="{!UT_Transaction__c.UT_Fund_name__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Remarks__c}"/>
+            </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:form>
+    <style>
+    .logo {
+      float: right;
+      width: 150px;
+      margin: -65px 20px 0 0;
+    }
+    .wrapper {
+         text-align:center;
+        
+		}
+</style>
+</apex:page>

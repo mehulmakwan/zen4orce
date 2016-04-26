@@ -1,0 +1,42 @@
+<apex:page standardController="UT_Transaction__c"  sidebar="false" extensions="UtTransaction">
+      <!-- Page Header -->
+  <apex:sectionHeader title="UT Transactions Edit Page" />
+  <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+    
+     <!-- Begin Form -->
+    <apex:form >
+        <script>
+            var flag = '{!flag}';
+            if(flag == 'True')
+                {
+                    alert("Transaction Not Allowed");
+                }            
+    </script>
+        <apex:pageBlock >
+        	<apex:pageBlockSection columns="2">
+            	<apex:inputField value="{!UT_Transaction__c.Amount__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Client_name__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Dealing_Terms__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.No_of_Units__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Remarks__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Switching_Fee__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.UT_Fund_name__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Transaction_Type__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="Bottom" >
+            	<apex:commandButton value="Save" action="{!save}" />
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+ <style>
+    .logo {
+      float: right;
+      width: 150px;
+      margin: -65px 20px 0 0;
+    }
+    .wrapper {
+         text-align:center;
+        
+		}
+</style>
+</apex:page>

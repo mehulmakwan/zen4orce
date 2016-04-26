@@ -1,0 +1,57 @@
+<apex:page standardController="UT_Transaction__c" extensions="UtTransaction" >
+    <apex:form ID="MyForm">
+        <div align="center" draggable="false" >
+        <apex:commandButton action="{!Save}" value="Save" />
+        </div>
+    <br/>
+    <script>
+        function getPicklist(someValue)
+        {
+            debugger;
+            var something = document.getElementById(someValue).value;
+            if(something == 'Purchase')
+            {
+                document.getElementById("{!$Component.myForm.pb1.pbs1.switch}").style.display= 'none';
+                document.getElementById('{!$Component.myForm.pb1.pbs1.deal}').style.display = 'block';
+            }
+         else if(something == 'Purchase(Switch In)') 
+             {
+                
+                document.getElementById('{!$Component.myForm.pb1.pbs1.deal}').style.display = 'none';
+                 document.getElementById('{!$Component.myForm.pb1.pbs1.switch}').style.display = 'block';
+             }
+            else if(something == 'Redemption') 
+             {
+                
+                document.getElementById('{!$Component.myForm.pb1.pbs1.deal}').style.visibility = 'block';
+                 document.getElementById('{!$Component.myForm.pb1.pbs1.switch}').style.display = 'block';
+             }
+            else
+                
+             {
+                
+                document.getElementById('{!$Component.myForm.pb1.pbs1.deal}').style.visibility = 'none';
+                 document.getElementById('{!$Component.myForm.pb1.pbs1.switch}').style.display = 'block';
+             }
+    }
+    
+    window.onload = sSave();
+    </script>
+    
+        <apex:pageBlock id="pb1">
+            <apex:pageBlockSection id="pbs1" columns="2" title="UT Transaction">
+                <apex:inputField value="{!UT_Transaction__c.Amount__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Client_name__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Dealing_Terms__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.No_of_Units__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Remarks__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Switching_Fee__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.UT_Fund_name__c}"/>
+                <apex:inputField value="{!UT_Transaction__c.Transaction_Type__c}" onchange="javascript:getPicklist('{!$Component.acc}')" id="acc"/>     
+                
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    
+    
+    </apex:form>
+</apex:page>

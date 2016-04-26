@@ -1,0 +1,55 @@
+<apex:page standardController="Campaign" sidebar="false" showChat="false" extensions="CM_controller" showHeader="false" >
+    <!-- Page Header -->
+  <apex:sectionHeader title="Campaign Edit VF Page" />
+  <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
+    
+     <!-- Begin Form -->
+    <apex:form title="Campain_Detail">
+    	<apex:pageBlock >
+            <apex:pageBlockSection columns="4" >
+                
+                 <!-- Drop Down Menu -->
+            	<select name="menu" onChange="window.document.location.href=this.options[this.selectedIndex].value;" value="GO">
+                    <option selected="selected"> ---------- Actions ---------- </option>
+                    <option value="https://mehulmakwan-dev-ed.my.salesforce.com/home/home.jsp">Manage Members</option>
+                    <option value="https://mehulmakwan-dev-ed.my.salesforce.com/home/home.jsp">Add Members from Mailing List</option>
+                </select>     
+                <!-- Custom Button -->
+                <apex:commandButton value="Edit" action="{!edit}" />
+                <apex:commandButton value="Copy" action="{!URLFOR($Action.Campaign.edit, Campaign.id, [clone='1'])}"  />
+                <apex:commandButton value="Delete" action="{!processButtonClick}" > 
+                               
+                </apex:commandButton>
+
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <!--- Detail page --->
+        <apex:pageBlock title="Details" >
+        	<apex:pageBlockSection >
+                <apex:outputField value="{!Campaign.Name}"/>
+                <apex:outputField value="{!Campaign.StartDate }"/>
+            	<apex:outputField value="{!Campaign.EndDate}"/>
+                <apex:outputField value="{!Campaign.Description}"/>
+                <apex:outputField value="{!Campaign.Type}"/>
+                <apex:outputField value="{!Campaign.Status}"/>
+                <apex:outputField value="{!Campaign.OwnerId }"/>
+                <apex:outputField value="{!Campaign.Soft_Delete__c }"/>
+            </apex:pageBlockSection>
+            
+				          
+                
+        </apex:pageBlock>
+    </apex:form>
+    <style>
+    .logo {
+      float: right;
+      width: 150px;
+      margin: -65px 20px 0 0;
+    }
+    .wrapper {
+         text-align:center;
+        
+		}
+</style>
+</apex:page>
