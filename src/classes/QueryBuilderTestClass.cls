@@ -15,7 +15,6 @@ public class QueryBuilderTestClass
         controller.execute();
 		//System.assertEquals('SELECT id FROM account',controller.message);
         System.assertNotEquals('SELECT id FROM account', controller.message);
-        
     }
     
     public static testMethod void withasc()

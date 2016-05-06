@@ -1,4 +1,5 @@
 <apex:page sidebar="false" showHeader="false" controller="QueryBuilderController">
+    <body style="background-image:url('{!$Resource.background}');"></body>
     <c:LoadingBox />
     <div class="center-div">
         <!-- Page Header -->

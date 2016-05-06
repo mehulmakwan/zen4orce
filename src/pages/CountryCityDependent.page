@@ -1,21 +1,18 @@
-<apex:page controller="CountryStateController" sidebar="false" showHeader="false">
-     <!-- Page Header -->
+<apex:page controller="CountryStateController" sidebar="false" showHeader="false" standardStylesheets="false">
+  
+    <!-- Page Header -->
   <div class="center-div">
   <apex:sectionHeader title="Assignment 1" />
   <apex:image value="http://s11.postimg.org/v892srq4z/logo.png" styleClass="logo"/>
      <!-- Page Form -->  
     
-    <apex:form >
+    <apex:form > 
     	<apex:pageBlock >    
             <apex:pageBlockSection >
-            	<apex:selectList id="dd" value="{!country}" label="Country" multiselect="false" size="1">
-                    <apex:actionSupport event="onchange" reRender="ss"/>
+            	<apex:selectList value="{!country}" label="Country" multiselect="false" size="1">
+                    <apex:actionSupport event="onchange"/>
                         <apex:selectOptions value="{!countryOptions}"/>
                 </apex:selectList>
-                
-                <apex:selectList value="{!city}" label="City" multiselect="false" size="1" rendered="true" id="ss">
-                        <apex:selectOptions value="{!cityOptions}"/>
-                </apex:selectList>  
             </apex:pageBlockSection>            	
         </apex:pageBlock>
     </apex:form>
